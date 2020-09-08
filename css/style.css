@@ -1,0 +1,203 @@
+body{
+    background-color: hsl(210, 46%, 95%);
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+h1{
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 0;
+}
+
+h6{
+    font-size: 1em;
+    font-weight: 700;
+    margin: 0 0 5px 0;
+}
+
+/* ----Grid----------------------------------------- */
+.articulo{
+    display: grid;
+    grid-template-columns: auto 300px 450px auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: ". imagen texto ."
+                         ". imagen autor. ";
+    margin: 15% auto;
+}
+
+.imgArticulo{
+    grid-area: imagen;
+    height: 300px;
+}
+
+.textoArticulo{
+    grid-area: texto;
+    padding: 9% 9% 0;
+    background-color: #ffffff;
+    border-radius: 0 10px 0 0;
+}
+
+.imgPpal{
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+}
+
+.avatar{
+    border-radius: 100%;
+    width: 50px;
+    margin: 0 10px 0 0;
+}
+
+.autor{
+    grid-area: autor;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 0 0 10px 0;
+    padding: 5% 9%;
+    /* Se agrega este position: relative para que funcione el position: absolute del shareBox  */
+    position: relative; 
+}
+
+.datosAutor{
+    display: flex;
+    align-items: center;
+}
+
+.fecha{
+    font-size: 0.8em;
+    margin: 0;
+}
+
+/* ------------Seccion de Compartir------------------- */
+.shareIconBox{
+    background-color: hsl(210, 46%, 95%);
+    padding: 3%;
+    border-radius: 100%;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.shareIconBox:hover{
+    background-color: hsl(212, 23%, 69%);
+}
+
+.shareIconBox:hover .shareIcon path {
+    fill: hsl(210, 46%, 95%)
+}
+
+.shareBox{
+    position: absolute;
+    bottom: 100px;
+    right: -30px;
+    background-color: hsl(217, 19%, 35%);
+    padding: 15px 25px;
+    color:  hsl(210, 46%, 95%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.hiding{
+    visibility: hidden;
+}
+
+.shareBox img{
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.shareBox::after{
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 20px solid  hsl(217, 19%, 35%);
+    position: absolute;
+    bottom: -15px;
+    right: 65px;
+}
+
+
+/* -------Pie de Página------------- */
+.attribution { 
+    font-size: 11px;
+    text-align: center;
+}
+
+.attribution a {
+    color: hsl(228, 45%, 44%); 
+}
+
+/* ------------------------------------------------------- */
+/* ------------------------Media Queries------------------ */
+/* ------------------------------------------------------- */
+
+/* Tamaño 798px */
+@media(max-width: 798px){
+
+    .articulo{
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas: "imagen"
+                             "texto"
+                             "autor";
+        margin: 15% 5%;
+    }
+
+    .imgPpal{
+        width: 100%;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .textoArticulo{
+        border-radius: 0;
+        padding: 9%;
+    }
+
+    .autor{
+        border-radius: 0 0 10px 10px;
+    }
+
+    .shareBox{
+        bottom: 0px;
+        right: 0px;
+        left: 0;
+        top: 0;
+        padding: 10px 9% 15px;
+        border-radius: 0 0 10px 10px;
+        font-size: 1.5em;
+    }
+
+    .shareBox a{
+        margin-left: 10%;
+    }
+
+    .shareBox::after{
+        visibility: hidden;
+    }
+    
+}
+
+/* Tamaño 576px */
+@media(max-width: 576px){
+    .shareBox a{
+        margin-left: 5%;
+    }
+}
+
+/* Tamaño 374px */
+@media(max-width: 374px){
+    .shareBox a{
+        margin-left: 0;
+    }
+
+    .articulo{
+        min-width: 360px;
+    }
+}
